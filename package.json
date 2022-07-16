@@ -1,0 +1,31 @@
+{
+  "name": "simple-user-crud-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geethwish/simple-user-crud-api.git"
+  },
+  "author": "geeth wishkamal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geethwish/simple-user-crud-api/issues"
+  },
+  "homepage": "https://github.com/geethwish/simple-user-crud-api#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
