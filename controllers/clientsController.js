@@ -17,11 +17,11 @@ const saveClients = asyncHandler(async (req, res) => {
 
     console.log(req.body);
 
-    const { name, amount, image } = req.body
+    const { name, amount } = req.body
+    const image = req.file.path;
+    console.log(req.file.path);
 
-    console.log(req.body);
-
-    if (!name) {
+    if (!name || !image) {
 
         res.status(400);
 
@@ -50,12 +50,19 @@ const updateClient = asyncHandler(async (req, res) => {
         throw new Error("Todo not found")
     }
 
+    const { name, amount, image } = req.body;
 
-    const updatedClient = await Clients.findByIdAndUpdate(req.params.id, req.body, {
+    const newImage = req.file.path;
+
+    const replaceImage = newImage ? newImage : image
+
+    await Clients.findByIdAndUpdate(req.params.id, { name, amount, image: replaceImage }, {
         new: true
     });
 
-    res.status(200).json(updatedClient)
+    const clients = await Clients.find();
+
+    res.status(200).json(clients)
 
 });
 
@@ -74,7 +81,9 @@ const deleteClient = asyncHandler(async (req, res) => {
 
     await client.remove();
 
-    res.status(200).json({ id: req.params.id })
+    const clients = await Clients.find();
+
+    res.status(200).json(clients)
 
 });
 
