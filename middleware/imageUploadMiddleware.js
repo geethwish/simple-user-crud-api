@@ -1,6 +1,7 @@
 
 const multer = require('multer');
 
+// set image upload location and file name
 const storage = multer.diskStorage({
 
     destination: (req, file, cb) => {
@@ -15,10 +16,12 @@ const storage = multer.diskStorage({
 
 });
 
+// set upload file limit
 const limits = {
     fileSize: 1024 * 1024 * 10
 };
 
+// set upload file type
 const fileFilter = (req, file, cb) => {
 
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png') {

@@ -12,6 +12,7 @@ const clientsRoute = require('./routes/clientsRoute');
 // middleware
 const { errorHandler } = require('./middleware/errorMiddleware');
 
+// set server port
 const port = process.env.PORT || 8050;
 
 const app = express();
@@ -24,11 +25,14 @@ app.use(cors());
 
 app.use('/uploads', express.static('uploads'))
 
+// use error handler middleware
 app.use(errorHandler);
 
 // routes
 app.use('/api/clients', clientsRoute);
 
+// connect to database
 ConnectDB();
 
+// start server
 app.listen(port, () => console.log(`Server starting on port ${port}`))

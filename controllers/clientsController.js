@@ -15,11 +15,10 @@ const getClients = asyncHandler(async (req, res) => {
 // Add New Client - POST/api/clients - public
 const saveClients = asyncHandler(async (req, res) => {
 
-    console.log(req.body);
-
     const { name, amount } = req.body
+
     const image = req.file.path;
-    console.log(req.file.path);
+
 
     if (!name || !image) {
 
